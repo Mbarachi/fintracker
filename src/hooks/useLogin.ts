@@ -1,13 +1,16 @@
 import { useMutation } from "@tanstack/react-query";
 import { authService } from "@/services/authService";
-import type { User, LoginCredentials } from "@/types/auth";
+import type {LoginCredentials } from "@/types/auth";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const useLogin = () => {
-    return useMutation<User, unknown, LoginCredentials>({
-        mutationFn: async (credentials) => authService.login(credentials),
-        onSuccess: (data) => {
-            return data
+    const navigate = useNavigate();
+
+    return useMutation({
+        mutationFn: async (credentials: LoginCredentials) => authService.login(credentials),
+        onSuccess: () => {
+            navigate("/dashboard");
         },
         onError: (error) => {
             let errorMessage = "An error occurred. Please try again.";
