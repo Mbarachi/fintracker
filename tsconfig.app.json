@@ -11,6 +11,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@assets/*": ["assets/*"],
+      "@lib/*": ["lib/*"],
       "@/*": ["./*"]
     },
     /* Bundler mode */

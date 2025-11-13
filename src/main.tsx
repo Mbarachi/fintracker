@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { setupWorker } from "msw/browser";
-import App from "./App.tsx";
 import "./index.css";
-import { apiHandlers } from "./api.ts";
+import { apiHandlers } from "./lib/api.ts";
+import App from "./App.tsx";
 
 const worker = setupWorker(...apiHandlers);
 

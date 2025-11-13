@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { faker } from "@faker-js/faker";
-import { transactions } from "./database";
+import { transactions } from "../database";
 
 const PAGE_SIZE = 20;
 
