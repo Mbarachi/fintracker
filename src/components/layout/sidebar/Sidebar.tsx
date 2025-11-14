@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, Wallet, BarChart2, Settings, LogOut, Database } from "lucide-react";
+import { Home, Wallet, BarChart2, Settings, LogOut } from "lucide-react";
 import { SidebarNavItem } from "./SidebarNavItem";
 import { useLogout } from "@/hooks/useLogout";
 
@@ -25,7 +25,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen })
 
                 <div className="flex flex-col gap-8">
                     <div className="flex items-center gap-3 px-3 py-2 text-text-light-primary">
-                        <Database />
+                        <Wallet />
                         <h2 className="text-xl font-bold leading-tight tracking-[-0.015em]">FinTrack</h2>
                     </div>
                     <nav className="flex flex-col gap-2">
