@@ -35,10 +35,11 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
             </div>
 
             {/* Transactions */}
-            {transactions.map((tx, idx) => (
+            {transactions.map((tx) => (
                 <div
                     className={`grid gap-4 items-center px-6 py-4 hover:bg-gray-50 transition-colors`}
                     style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))` }}
+                    key={tx.referenceNumber}
                 >
                     {columns.includes("merchant") && <p className={columnClasses.merchant}>{tx.merchant}</p>}
                     {columns.includes("amount") && (
@@ -50,8 +51,8 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                     {columns.includes("referenceNumber") && <p className={columnClasses.referenceNumber}>{tx.referenceNumber}</p>}
                     {columns.includes("status") && (
                         <span
-                        className={`${columnClasses.status} ${tx.status === "completed" ? "bg-green-200 text-green-500" : "bg-amber-200 text-amber-500"
-                        }`}
+                            className={`${columnClasses.status} ${tx.status === "completed" ? "bg-green-200 text-green-500" : "bg-amber-200 text-amber-500"
+                                }`}
                         >
                             {tx.status}
                         </span>
