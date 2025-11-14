@@ -17,6 +17,9 @@ const LoginForm: React.FC = () => {
     );
   };
 
+  const isPasswordInvalid = password.length > 0 && password.length < 8;
+  const isDisabled = !email || !password || isPasswordInvalid;
+
   return (
     <div className="flex flex-col w-full max-w-md gap-8">
       <div className="flex flex-col gap-3">
@@ -44,24 +47,11 @@ const LoginForm: React.FC = () => {
             showPasswordToggle
             onChange={(e) => setPassword(e.target.value)}
             error={
-              password.length > 0 && password.length < 8
+              isPasswordInvalid
                 ? "Password must be at least 8 characters"
                 : ""
             }
           />
-          {/* <p
-            className=
-            {
-              `text-sm text-red-500
-                transition-all duration-300 ease-in-out
-                ${password.length > 0 && password.length < 8
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-1 pointer-events-none"
-              }`
-            }
-          >
-            Password must be at least 8 characters
-          </p> */}
 
           <div className="flex items-center justify-between">
             <Checkbox label="Remember Me" />
@@ -73,7 +63,7 @@ const LoginForm: React.FC = () => {
             </a>
           </div>
 
-          <Button fullWidth type="submit">
+          <Button fullWidth type="submit" disabled={isDisabled}>
             {loginMutation?.isPending ? "Logging in..." : "Log In"}
           </Button>
           <p className="text-center text-base text-gray-600 dark:text-[#92c9a4]">
