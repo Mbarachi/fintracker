@@ -1,15 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { transactionService } from "@/services/transactionService";
-import type { TransactionResponse } from "@/types/transaction";
+import type { TransactionFilters, TransactionResponse } from "@/types/transaction";
 
-export const useTransactions = () => {
+export const useTransactions = (filters: TransactionFilters) => {
     return useQuery<TransactionResponse>({
-        queryKey: ["transactions"],
+        queryKey: ["transactions", filters],
         queryFn: async () => {
-            const data = await transactionService.getTransactionsList();
+            const data = await transactionService.getTransactionsList(filters);
             return data;
         },
-        enabled: true,
+        placeholderData: keepPreviousData, // smooth pagination UX
+        refetchOnWindowFocus: true,
     },
     );
 }

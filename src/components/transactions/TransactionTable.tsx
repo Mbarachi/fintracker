@@ -23,7 +23,7 @@ export const TransactionTable: React.FC<{ transactions: Transaction[] }> = ({ tr
                     className={`text-sm font-medium text-right ${tx.amount > 0 ? 'text-positive' : 'text-negative'
                         }`}
                 >
-                    {tx.amount}
+                    ${tx.amount}
                 </p>
             </div>
         ))}

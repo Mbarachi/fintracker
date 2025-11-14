@@ -25,3 +25,9 @@ export interface TransactionResponse {
     items: Transaction[];
     pagination: Pagination;
 }
+
+export interface TransactionFilters {
+    page?: number;
+    merchant?: string;
+    date?: string;
+}
