@@ -6,7 +6,7 @@ import { TrendingUp, TrendingDown, Wallet } from "lucide-react";
 import { useDashboardStats } from "@/hooks/useDashboardStats";
 
 export const Dashboard: React.FC = () => {
-  const { data: user, isLoading: userLoading } = useCurrentUser();
+  const { data: user } = useCurrentUser();
   const { data: stats, isLoading: statsLoading } = useDashboardStats();
 
   const accountBalance = stats ? (stats.income.amount) - Math.abs(stats.expenses.amount) : 0;

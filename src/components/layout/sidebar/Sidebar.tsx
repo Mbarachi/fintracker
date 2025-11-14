@@ -2,6 +2,7 @@ import React from "react";
 import { Home, Wallet, BarChart2, Settings, LogOut } from "lucide-react";
 import { SidebarNavItem } from "./SidebarNavItem";
 import { useLogout } from "@/hooks/useLogout";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 
 interface SidebarProps {
     sidebarOpen: boolean;
@@ -10,6 +11,7 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen }) => {
     const logoutMutation = useLogout();
+    const { data: user } = useCurrentUser()
     return (
         <>
             <div
@@ -48,8 +50,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen })
                             }}
                         ></div>
                         <div className="flex flex-col">
-                            <h1 className="text-text-light-primary text-sm font-semibold leading-normal">Alex Doe</h1>
-                            <p className="text-text-light-secondary text-xs font-normal leading-normal">alex.doe@email.com</p>
+                            <h1 className="text-text-light-primary text-sm font-semibold leading-normal">{user?.firstName + " " + user?.lastName}</h1>
+                            <p className="text-text-light-secondary text-xs font-normal leading-normal">{user?.email}</p>
                         </div>
                     </div>
                 </div>
