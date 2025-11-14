@@ -50,7 +50,16 @@ const Input = React.forwardRef<HTMLInputElement, InputFieldProps>(
             </div>
           )}
         </div>
-        {error && <p className="text-sm text-red-500">{error}</p>}
+        <p
+          className={clsx(
+            "text-sm text-red-500 transition-all duration-300 ease-in-out",
+            error
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-1 pointer-events-none"
+          )}
+        >
+          {error ?? ""}
+        </p>
       </div>
     );
   }

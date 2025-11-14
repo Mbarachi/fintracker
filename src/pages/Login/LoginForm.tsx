@@ -41,8 +41,27 @@ const LoginForm: React.FC = () => {
             type="password"
             placeholder="Enter your password"
             value={password}
+            showPasswordToggle
             onChange={(e) => setPassword(e.target.value)}
+            error={
+              password.length > 0 && password.length < 8
+                ? "Password must be at least 8 characters"
+                : ""
+            }
           />
+          {/* <p
+            className=
+            {
+              `text-sm text-red-500
+                transition-all duration-300 ease-in-out
+                ${password.length > 0 && password.length < 8
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-1 pointer-events-none"
+              }`
+            }
+          >
+            Password must be at least 8 characters
+          </p> */}
 
           <div className="flex items-center justify-between">
             <Checkbox label="Remember Me" />
