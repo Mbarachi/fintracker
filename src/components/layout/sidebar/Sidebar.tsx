@@ -29,15 +29,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ sidebarOpen, setSidebarOpen })
                         <h2 className="text-xl font-bold leading-tight tracking-[-0.015em]">FinTrack</h2>
                     </div>
                     <nav className="flex flex-col gap-2">
-                        <SidebarNavItem icon={Home} label="Dashboard" active href="#" />
-                        <SidebarNavItem icon={Wallet} label="Accounts" href="#" />
-                        <SidebarNavItem icon={BarChart2} label="Reports" href="#" />
-                        <SidebarNavItem icon={Settings} label="Settings" href="#" />
+                        <SidebarNavItem icon={Home} label="Dashboard" to="/dashboard" />
+                        <SidebarNavItem icon={Wallet} label="Transactions" to="/transactions" />
+                        <SidebarNavItem icon={BarChart2} label="Reports" />
+                        <SidebarNavItem icon={Settings} label="Settings" />
                     </nav>
                 </div>
                 <div className="flex flex-col gap-4">
                     <div className="border-t border-border-light pt-4">
-                        <SidebarNavItem icon={LogOut} label="Log Out" href="#" onClick={() => logoutMutation.mutate()} />
+                        <SidebarNavItem icon={LogOut} label="Log Out" onClick={() => logoutMutation.mutate()} />
                     </div>
                     <div className="flex gap-3 items-center">
                         <div
