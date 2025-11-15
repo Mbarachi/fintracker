@@ -4,10 +4,12 @@ import { SummaryCard } from "@components/cards/SummaryCard";
 import { RecentTransactions } from "@components/transactions/RecentTransactions";
 import { TrendingUp, TrendingDown, Wallet } from "lucide-react";
 import { useDashboardStats } from "@/hooks/useDashboardStats";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard: React.FC = () => {
   const { data: user } = useCurrentUser();
   const { data: stats, isLoading: statsLoading } = useDashboardStats();
+  const navigate = useNavigate();
 
   const accountBalance = stats ? (stats?.income.amount) - Math.abs(stats?.expenses.amount) : 0;
   const income = stats ? stats?.income.amount : 0;
@@ -35,14 +37,14 @@ export const Dashboard: React.FC = () => {
         <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <SummaryCard icon={TrendingUp} title="Income this Month" value={`$${income.toFixed(2)}`} />
           <SummaryCard icon={TrendingDown} title="Expenses this Month" value={`$${expenses.toFixed(2)}`} bgColor="bg-red-500/10" />
-          <SummaryCard icon={Wallet} title="Net Cash Flow" value={`$${netExpense.toFixed(2)}`} bgColor="bg-blue-500/10" />
+          <SummaryCard icon={Wallet} title="Net Cash Flow" value={`$${Math.abs(netExpense).toFixed(2)}`} bgColor="bg-blue-500/10" />
         </div>
       </div>
 
       <div className="mt-10">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-text-light-primary text-xl font-bold leading-tight tracking-[-0.015em]">Recent Transactions</h2>
-          <a className="text-primary text-sm font-semibold hover:underline" href="#">View All</a>
+          <a role="button" className="text-primary text-sm font-semibold hover:underline" onClick={() => navigate("/transactions")}>View All</a>
         </div>
         <div className="w-full overflow-x-auto">
           <RecentTransactions transactions={recentTransactions ?? []} />

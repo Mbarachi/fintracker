@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 interface TransactionTableProps {
     transactions: Transaction[];
     columns?: (
-        | "merchant"
         | "date"
+        | "merchant"
         | "amount"
         | "paymentMethod"
         | "referenceNumber"
@@ -19,7 +19,7 @@ interface TransactionTableProps {
 
 export const TransactionTable: React.FC<TransactionTableProps> = ({
     transactions,
-    columns = ["merchant", "date", "amount"],
+    columns = ["date", "merchant", "amount"],
 }) => {
     const columnClasses: Record<string, string> = {
         merchant: "text-sm font-medium text-text-light-primary",
@@ -70,6 +70,10 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                                 gridTemplateColumns: `repeat(${columns.length}, minmax(${minColWidthPx}px, 1fr))`,
                             }}
                         >
+                            {columns.includes("date") && (
+                                <p className={columnClasses.date}>{formatDate(tx.date)}</p>
+                            )}
+
                             {columns.includes("merchant") && (
                                 <p className={columnClasses.merchant}>{tx.merchant}</p>
                             )}
@@ -79,9 +83,10 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                                     className={`${columnClasses.amount} ${tx.amount > 0 ? "text-positive" : "text-negative"
                                         }`}
                                 >
-                                    {new Intl.NumberFormat(undefined, {
+                                    {new Intl.NumberFormat("en-us", {
                                         style: "currency",
                                         currency: "USD",
+                                        currencyDisplay: "symbol",
                                     }).format(tx.amount)}
                                 </p>
                             )}
@@ -103,10 +108,6 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
                                 >
                                     {tx.status}
                                 </span>
-                            )}
-
-                            {columns.includes("date") && (
-                                <p className={columnClasses.date}>{formatDate(tx.date)}</p>
                             )}
 
                             {columns.includes("action") && (
