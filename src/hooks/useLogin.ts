@@ -3,6 +3,7 @@ import { authService } from "@/services/authService";
 import type { LoginCredentials, User } from "@/types/auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export const useLogin = () => {
     const navigate = useNavigate();
@@ -12,6 +13,10 @@ export const useLogin = () => {
         mutationFn: async (credentials: LoginCredentials) => {
             // ⏳ Simulate network delay (1.5s)
             await new Promise((resolve) => setTimeout(resolve, 1500));
+            // fake "backend" validation
+            if (credentials.email !== "user@test.com" || credentials.password !== "password") {
+                return Promise.reject(new Error("Invalid credentials"));
+            }
 
             return authService.login(credentials);
         },
@@ -23,14 +28,7 @@ export const useLogin = () => {
             navigate("/dashboard");
         },
         onError: (error) => {
-            let errorMessage = "An error occurred. Please try again.";
-            if (axios.isAxiosError(error)) {
-                if (error.response) {
-                    const data = error.response.data as { message?: string };
-                    errorMessage = data?.message ?? errorMessage;
-                };
-            }
-            alert(errorMessage);
+            toast.error(error instanceof Error ? error.message : "An error occurred. Please try again.");
         }
     });
 };

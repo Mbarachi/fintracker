@@ -5,6 +5,7 @@ import "./index.css";
 import { apiHandlers } from "@lib/api.ts";
 import App from "./App.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 
 const worker = setupWorker(...apiHandlers);
 
@@ -17,6 +18,7 @@ setupMocking().then(() => {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <App />
+        <Toaster position="top-right" />
       </QueryClientProvider>
     </StrictMode>
   );
