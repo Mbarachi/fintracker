@@ -36,8 +36,8 @@ export const Dashboard: React.FC = () => {
 
         <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <SummaryCard icon={TrendingUp} title="Income this Month" value={`$${income.toFixed(2)}`} />
-          <SummaryCard icon={TrendingDown} title="Expenses this Month" value={`$${expenses.toFixed(2)}`} bgColor="bg-red-500/10" />
-          <SummaryCard icon={Wallet} title="Net Cash Flow" value={`$${Math.abs(netExpense).toFixed(2)}`} bgColor="bg-blue-500/10" />
+          <SummaryCard icon={TrendingDown} title="Expenses this Month" value={`$${Math.abs(expenses).toFixed(2)}`} bgColor="bg-red-500/10" />
+          <SummaryCard icon={Wallet} title="Net Cash Flow" value={`$${netExpense.toFixed(2)}`} bgColor="bg-blue-500/10" />
         </div>
       </div>
 
