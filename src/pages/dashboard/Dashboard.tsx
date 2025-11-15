@@ -5,6 +5,7 @@ import { RecentTransactions } from "@components/transactions/RecentTransactions"
 import { TrendingUp, TrendingDown, Wallet } from "lucide-react";
 import { useDashboardStats } from "@/hooks/useDashboardStats";
 import { useNavigate } from "react-router-dom";
+import Loader from "@components/ui/Loader";
 
 export const Dashboard: React.FC = () => {
   const { data: user } = useCurrentUser();
@@ -50,6 +51,7 @@ export const Dashboard: React.FC = () => {
           <RecentTransactions transactions={recentTransactions ?? []} />
         </div>
       </div>
+      {statsLoading && <Loader />}
     </div>
   );
 };
