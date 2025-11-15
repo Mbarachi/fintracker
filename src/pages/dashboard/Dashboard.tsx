@@ -9,10 +9,10 @@ export const Dashboard: React.FC = () => {
   const { data: user } = useCurrentUser();
   const { data: stats, isLoading: statsLoading } = useDashboardStats();
 
-  const accountBalance = stats ? (stats.income.amount) - Math.abs(stats.expenses.amount) : 0;
-  const income = stats ? stats.income.amount : 0;
-  const expenses = stats ? stats.expenses.amount : 0;
-  const netExpense = stats ? (stats.income.amount) + Math.abs(stats.expenses.amount) : 0;
+  const accountBalance = stats ? (stats?.income.amount) - Math.abs(stats?.expenses.amount) : 0;
+  const income = stats ? stats?.income.amount : 0;
+  const expenses = stats ? stats?.expenses.amount : 0;
+  const netExpense = stats ? (stats?.income.amount) + Math.abs(stats?.expenses.amount) : 0;
 
 
   const recentTransactions = stats?.mostRecentTransactions
