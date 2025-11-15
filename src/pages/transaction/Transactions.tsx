@@ -66,7 +66,7 @@ export const TransactionsPage: React.FC = () => {
       </div>
 
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        <TransactionTable transactions={transactionsData?.items ?? []} columns={["merchant", "amount", "paymentMethod", "referenceNumber", "status", "date"]}/>
+        <TransactionTable transactions={transactionsData?.items ?? []} columns={["merchant", "amount", "paymentMethod", "referenceNumber", "status", "date", "action"]}/>
         {/* Pagination */}
         <div className="flex items-center justify-end p-4 border-t border-border-light text-sm text-gray-500 gap-3">
           <Button

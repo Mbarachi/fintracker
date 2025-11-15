@@ -44,7 +44,9 @@ export const Dashboard: React.FC = () => {
           <h2 className="text-text-light-primary text-xl font-bold leading-tight tracking-[-0.015em]">Recent Transactions</h2>
           <a className="text-primary text-sm font-semibold hover:underline" href="#">View All</a>
         </div>
-        <RecentTransactions transactions={recentTransactions ?? []} />
+        <div className="w-full overflow-x-auto">
+          <RecentTransactions transactions={recentTransactions ?? []} />
+        </div>
       </div>
     </div>
   );

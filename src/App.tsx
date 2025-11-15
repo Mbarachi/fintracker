@@ -13,6 +13,7 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         {/* Public page */}
         <Route path="/login" element={<LoginPage />} />
+      {/* Protected pages */}
         <Route element={<AppLayout />}>
           <Route path="/dashboard" element={
             <ProtectedRoute>

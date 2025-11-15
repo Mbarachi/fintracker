@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const sizeClasses: Record<NonNullable<ButtonProps["size"]>, string> = {
-    sm: "h-10 px-4 text-sm",
+    sm: "h-10 px-4 text-xs",
     md: "h-12 px-5 text-base",
     lg: "h-14 px-6 text-lg",
   };
