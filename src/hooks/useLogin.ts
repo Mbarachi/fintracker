@@ -9,7 +9,12 @@ export const useLogin = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: async (credentials: LoginCredentials) => authService.login(credentials),
+        mutationFn: async (credentials: LoginCredentials) => {
+            // ⏳ Simulate network delay (1.5s)
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+
+            return authService.login(credentials);
+        },
         onSuccess: (user: User) => {
             // Cache the logged-in user data
             queryClient.setQueryData(["currentUser"], user);

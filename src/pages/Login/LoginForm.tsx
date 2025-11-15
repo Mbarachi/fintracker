@@ -3,6 +3,7 @@ import Button from '@components/ui/Button'
 import Input from "@components/ui/Input";
 import Checkbox from "@components/ui/Checkbox";
 import { useLogin } from "@/hooks/useLogin";
+import Loader from "@components/ui/Loader";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -64,7 +65,7 @@ const LoginForm: React.FC = () => {
           </div>
 
           <Button fullWidth type="submit" disabled={isDisabled}>
-            {loginMutation?.isPending ? "Logging in..." : "Log In"}
+            Log In
           </Button>
           <p className="text-center text-base text-gray-600 dark:text-[#92c9a4]">
             Don't have an account?{" "}
@@ -77,6 +78,7 @@ const LoginForm: React.FC = () => {
           </p>
         </div>
       </form>
+      {loginMutation.isPending && <Loader />}
     </div>
   );
 };
