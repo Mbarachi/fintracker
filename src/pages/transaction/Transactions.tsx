@@ -3,16 +3,18 @@ import Input from "@components/ui/Input";
 import Button from "@components/ui/Button";
 import { TransactionTable } from "@components/transactions/TransactionTable";
 import { useTransactions } from "@/hooks/useTransactions";
+import { useDebounce } from "@/hooks/useDebounce";
 
 
 export const TransactionsPage: React.FC = () => {
   const [page, setPage] = useState(1);
   const [merchantFilter, setMerchantFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+  const debouncedMerchantFilter = useDebounce(merchantFilter, 400);
 
   const { data: transactionsData, isLoading } = useTransactions({
     page: page,
-    merchant: merchantFilter || undefined,
+    merchant: debouncedMerchantFilter || undefined,
     date: dateFilter || undefined,
   });
 
