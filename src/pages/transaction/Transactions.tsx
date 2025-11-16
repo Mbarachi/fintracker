@@ -22,7 +22,7 @@ export const TransactionsPage: React.FC = () => {
   const totalPages = transactionsData?.pagination.totalPages ?? 1;
 
   return (
-   <div className="min-h-screen w-full overflow-x-hidden px-2 sm:px-0">
+    <div className="min-h-screen w-full overflow-x-hidden px-2 sm:px-0">
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-text-light-primary">Transactions</h1>
         <p className="text-sm text-text-light-secondary mt-1">
@@ -48,6 +48,7 @@ export const TransactionsPage: React.FC = () => {
           <Input
             type="date"
             value={dateFilter}
+            max={new Date().toISOString().split("T")[0]} // Prevent future dates
             onChange={(e) => setDateFilter(e.target.value)}
             className="w-full"
           />
