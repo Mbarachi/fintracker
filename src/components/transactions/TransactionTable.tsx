@@ -29,7 +29,7 @@ export const TransactionTable: React.FC<TransactionTableProps> = ({
     };
 
     return (
-        <div className="max-w-[400px] overflow-x-auto">
+        <div className="w-full overflow-x-auto max-w-[400px] md:max-w-none">
             <table className="min-w-max w-full border-collapse">
                 <thead className="bg-surface-light">
                     <tr>
