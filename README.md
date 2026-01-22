@@ -16,8 +16,8 @@ A small personal finance demo application built with React + TypeScript. It impl
 1. Clone
 
 ```bash
-git clone https://github.com/Mbarachi/cashi-frontend-code-test.git
-cd cashi-frontend-code-test
+git clone https://github.com/Mbarachi/fintracker.git
+cd fintracker
 ```
 
 2. Install dependencies
